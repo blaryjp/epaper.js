@@ -1,6 +1,7 @@
 const image = require('./image.js');
 const waveshare4In2Driver = require('bindings')('waveshare4in2.node');
 const waveshare7in5v2Driver = require('bindings')('waveshare7in5v2.node');
+const waveshare2in7Driver = require('bindings')('waveshare2in7.node');
 
 const waveshare4in2Horizontal = {
     height: 300,
@@ -54,6 +55,19 @@ const waveshare4in2VerticalGray = {
     },
 };
 
+const waveshare2in7Horizontal = {
+    height: 176,
+    width: 264,
+    driver: waveshare2in7Driver,
+    displayPNG: async function (imgContents) {
+        const buffer = await image.convertPNGto1BitBW(imgContents);
+        this.driver.display(buffer);
+    },
+    init: function () {
+        this.driver.init();
+    },
+};
+
 const waveshare7in5v2Horizontal = {
     height: 480,
     width: 800,
@@ -91,6 +105,9 @@ const devices = {
     waveshare7in5v2: waveshare7in5v2Horizontal,
     waveshare7in5v2Horizontal,
     waveshare7in2v2Vertical,
+
+    waveshare2in7: waveshare2in7Horizontal,
+    waveshare2in7Horizontal,
 };
 
 module.exports = devices;
