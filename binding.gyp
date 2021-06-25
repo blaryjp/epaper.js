@@ -23,13 +23,13 @@
             ]
         },
         {
-            "target_name": "waveshare2in7b",
+            "target_name": "waveshare2in7v2",
             "cflags!": [ "-fno-exceptions" ],
             "cflags_cc!": [ "-fno-exceptions" ],
             "sources": [ 
-                "./c/EPD_2in7b_node.cc",
+                "./c/EPD_2in7_V2_node.cc",
                 "./c/DEV_Config.c",
-                "./c/EPD_2in7b.c"
+                "./c/EPD_2in7_V2.c"
             ],
             "defines": [
                 "RPI",

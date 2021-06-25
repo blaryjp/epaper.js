@@ -1,7 +1,7 @@
 #include "napi.h"
 extern "C" {
     #include "DEV_Config.h"
-    #include "EPD_2in7b.h"
+    #include "EPD_2in7_V2.h"
 }
 
 Napi::Number DEV_Init(const Napi::CallbackInfo& info) {
@@ -12,26 +12,26 @@ Napi::Number DEV_Init(const Napi::CallbackInfo& info) {
 
 Napi::Value Init(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
-    EPD_2IN7B_Init();
+    EPD_2IN7_V2_Init();
     return env.Undefined();
 }
 
 Napi::Value Display(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
     Napi::Buffer<uint8_t> jsBuffer = info[0].As<Napi::Buffer<uint8_t>>();
-    EPD_2IN7B_Display(reinterpret_cast<uint8_t *>(jsBuffer.Data()));
+    EPD_2IN7_V2_Display(reinterpret_cast<uint8_t *>(jsBuffer.Data()));
     return env.Undefined();
 }
 
 Napi::Value Clear(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
-    EPD_2IN7B_Clear();
+    EPD_2IN7_V2_Clear();
     return env.Undefined();
 }
 
 Napi::Value Sleep(const Napi::CallbackInfo& info) {
     Napi::Env env = info.Env();
-    EPD_2IN7B_Sleep();
+    EPD_2IN7_V2_Sleep();
     return env.Undefined();
 }
 

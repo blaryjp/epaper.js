@@ -2,7 +2,7 @@ const image = require('./image.js');
 const waveshare4In2Driver = require('bindings')('waveshare4in2.node');
 const waveshare7in5v2Driver = require('bindings')('waveshare7in5v2.node');
 const waveshare2in7Driver = require('bindings')('waveshare2in7.node');
-const waveshare2in7bDriver = require('bindings')('waveshare2in7b.node');
+const waveshare2in7v2Driver = require('bindings')('waveshare2in7v2.node');
 
 const waveshare4in2Horizontal = {
     height: 300,
@@ -68,10 +68,10 @@ const waveshare2in7Horizontal = {
         this.driver.init();
     },
 };
-const waveshare2in7bHorizontal = {
+const waveshare2in7v2Horizontal = {
     height: 176,
     width: 264,
-    driver: waveshare2in7bDriver,
+    driver: waveshare2in7v2Driver,
     displayPNG: async function (imgContents) {
         const buffer = await image.convertPNGto1BitBW(imgContents);
         this.driver.display(buffer);
@@ -122,9 +122,9 @@ const devices = {
 
     waveshare2in7: waveshare2in7Horizontal,
     waveshare2in7Horizontal,
-    
-    waveshare2in7b: waveshare2in7bHorizontal,
-    waveshare2in7bHorizontal,
+
+    waveshare2in7v2: waveshare2in7v2Horizontal,
+    waveshare2in7v2Horizontal,
 };
 
 module.exports = devices;
